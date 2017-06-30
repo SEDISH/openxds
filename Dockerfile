@@ -31,6 +31,7 @@ ADD openxds.log ${HOME_SHARE}/openxds/openxds.log
 ADD repository.jdbc.cfg.xml ${HOME_SHARE}/openxds/repository.jdbc.cfg.xml
 ADD omar.properties ${HOME_SHARE}/openxds/omar.properties
 ADD openxds.properties ${HOME_SHARE}/openxds/openxds.properties
+ADD create_database_schema_log2_postgres.sql ${HOME_SHARE}/openxds/misc/create_database_schema_log2_postgres.sql
 
 # Expose ports
 EXPOSE 8010
