@@ -26,6 +26,7 @@ RUN mkdir -p "${HOME_SHARE}/openxds/" \
     && tar -zxvf ${HOME_SHARE}/openxds.tar.gz -C ${HOME_SHARE}/openxds \
     && rm ${HOME_SHARE}/openxds.tar.gz
 
+ADD openxds-1.1.2.jar ${HOME_SHARE}/openxds/openxds-1.1.2.jar
 ADD IheActors.xml ${HOME_SHARE}/openxds/IheActors.xml
 ADD openxds.log ${HOME_SHARE}/openxds/openxds.log
 ADD repository.jdbc.cfg.xml ${HOME_SHARE}/openxds/repository.jdbc.cfg.xml
