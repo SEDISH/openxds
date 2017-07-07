@@ -14,7 +14,7 @@ ENV DOCKERIZE_VERSION v0.2.0
 RUN curl -L "https://github.com/jwilder/dockerize/releases/download/${DOCKERIZE_VERSION}/dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz" -o "/tmp/dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz" \
     && tar -C /usr/local/bin -xzvf "/tmp/dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz"
 
-# Install database clients
+# Install database client
 RUN apt-get update && apt-get install -y postgresql-client
 
 # Install OpenXDS
@@ -33,6 +33,8 @@ ADD repository.jdbc.cfg.xml ${HOME_SHARE}/openxds/repository.jdbc.cfg.xml
 ADD omar.properties ${HOME_SHARE}/openxds/omar.properties
 ADD openxds.properties ${HOME_SHARE}/openxds/openxds.properties
 ADD create_database_schema_log2_postgres.sql ${HOME_SHARE}/openxds/misc/create_database_schema_log2_postgres.sql
+RUN rm ${HOME_SHARE}/openxds/misc/create_database_schema_postgres.sql
+ADD create_database_schema_postgres.sql ${HOME_SHARE}/openxds/misc/create_database_schema_postgres.sql
 
 # Expose ports
 EXPOSE 8010

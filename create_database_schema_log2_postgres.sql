@@ -1,4 +1,6 @@
+
 CREATE DATABASE log2 OWNER openxds;
+GRANT ALL PRIVILEGES ON DATABASE log2 TO openxds;
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
