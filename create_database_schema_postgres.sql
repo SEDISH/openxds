@@ -1,7 +1,4 @@
 
-CREATE DATABASE openxds OWNER openxds;
-GRANT ALL PRIVILEGES ON DATABASE openxds TO openxds;
-
 DROP TABLE IF EXISTS Association CASCADE;
 CREATE TABLE Association (
 --Identifiable Attributes

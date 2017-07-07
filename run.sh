@@ -9,15 +9,17 @@ if [[ ! -z `psql -h postgresql-openxds -p 5432 -U postgres -lqt | cut -d \| -f 1
    	echo "# Database OpenXDS exists #"
 else
 	echo "# Init OpenXDS Database #"
+
 	psql -h postgresql-openxds -p 5432 -U postgres -c "CREATE USER openxds SUPERUSER PASSWORD 'openxds'"
-	psql -h postgresql-openxds -p 5432 -U postgres -f /opt/openxds/misc/create_database_schema_postgres.sql
+	psql -h postgresql-openxds -p 5432 -U postgres -c "CREATE DATABASE openxds OWNER 'openxds'";
+	psql -h postgresql-openxds -p 5432 -d openxds -U openxds -f /opt/openxds/misc/create_database_schema_postgres.sql
 fi
 
 if [[ ! -z `psql -h postgresql-openxds -p 5432 -U postgres -lqt | cut -d \| -f 1 | grep -w 'log2'` ]]; then
 	echo "# Database log2 exists #"
 else
 	echo "# Init log2 Database#"
-	psql -h postgresql-openxds -p 5432 -U postgres -f /opt/openxds/misc/create_database_schema_log2_postgres.sql
+	psql -h postgresql-openxds -p 5432 -U openxds -f /opt/openxds/misc/create_database_schema_log2_postgres.sql
 fi
 
 
