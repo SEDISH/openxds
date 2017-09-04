@@ -41,9 +41,9 @@ EXPOSE 8010
 EXPOSE 8020
 
 RUN cd ${HOME_SHARE}/openxds/
-ADD run.sh ${HOME_SHARE}/openxds/run.sh
-RUN chmod +x ${HOME_SHARE}/openxds/run.sh
+ADD cmd.sh ${HOME_SHARE}/openxds/cmd.sh
+RUN chmod +x ${HOME_SHARE}/openxds/cmd.sh
 
 # Run using dockerize
-CMD ["dockerize","-wait","tcp://postgresql-openxds:5432","-timeout","100s","/opt/openxds/run.sh", "run"]
+CMD ["dockerize","-wait","tcp://postgresql-openxds:5432","-timeout","100s","/opt/openxds/cmd.sh", "run"]
 
